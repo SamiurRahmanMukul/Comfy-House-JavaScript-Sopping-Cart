@@ -160,10 +160,34 @@ class UI {
     cartContent.appendChild(div);
     // console.log(cartContent);
   }
-  // ? showCart() method create & display cart
+  // ? showCart() & hideCart() Method
   showCart() {
     cartOverlay.classList.add("transparentBcg");
     cartDOM.classList.add("showCart");
+  }
+  hideCart() {
+    cartOverlay.classList.remove("transparentBcg");
+    cartDOM.classList.remove("showCart");
+  }
+
+  // ? setup app
+  setupAPP() {
+    cart = Storage.getCart();
+    this.setCartValues(cart);
+    this.populateCart(cart);
+
+    // cart show / hide button
+    cartBtn.addEventListener("click", this.showCart);
+    closeCartBtn.addEventListener("click", this.hideCart);
+  }
+
+  populateCart(cart) {
+    cart.forEach((item) => this.addCartItem(item));
+  }
+
+  // TODO: cart logic functionality
+  cartLogic() {
+    // TODO: next time start here ...
   }
 }
 
@@ -179,9 +203,16 @@ class Storage {
     return products.find((product) => product.id === id);
   }
 
-  // save cart item local storage
+  // ? save cart item local storage
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // ? get cart item local storage
+  static getCart() {
+    return localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
   }
 }
 
@@ -189,6 +220,9 @@ class Storage {
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
+
+  // setup app
+  ui.setupAPP();
 
   // get all products
   products
@@ -199,5 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(() => {
       ui.getBagButtons();
+      ui.cartLogic();
     });
 });
