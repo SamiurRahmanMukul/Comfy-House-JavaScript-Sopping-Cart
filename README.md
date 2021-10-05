@@ -10,4 +10,4 @@
 
 <!-- project link -->
 
-[shoppingcart]: https://samiurrahmanmukul.github.io/comfy-house-javascript-sopping-cart-project/
+[shoppingcart]: https://samiurrahmanmukul.github.io/Comfy-House-JavaScript-Sopping-Cart
