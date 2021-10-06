@@ -1,4 +1,4 @@
-# comfy-house-javascript-sopping-cart-project
+# Comfy House `JavaScript Sopping Cart` Project
 
 ### 🔰 Live Preview Projects:
 
